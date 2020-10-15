@@ -3,9 +3,24 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import { JssProvider } from 'react-jss'
+import { SheetsRegistry } from 'react-jss'
+import preset from 'jss-preset-default'
+import jss from 'jss'
+
+const setupJss = () => {
+  jss.setup(preset())
+  const sheetsRegistry = new SheetsRegistry()
+  return sheetsRegistry
+}
+
+const sheets = setupJss()
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <JssProvider registry={sheets}>
+      <App />
+    </JssProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
