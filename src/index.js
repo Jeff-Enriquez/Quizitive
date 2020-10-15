@@ -11,6 +11,14 @@ import jss from 'jss'
 const setupJss = () => {
   jss.setup(preset())
   const sheetsRegistry = new SheetsRegistry()
+  const globalStyleSheet = jss.createStyleSheet(
+    {'@global': { 
+        body: { 
+          margin: '0',
+        },
+    }}
+  ).attach()
+  sheetsRegistry.add(globalStyleSheet)
   return sheetsRegistry
 }
 
