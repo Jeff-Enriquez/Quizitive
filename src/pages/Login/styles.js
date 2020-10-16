@@ -56,6 +56,17 @@ const useStyles = createUseStyles({
       color: '#6600cc',
       cursor: 'pointer', 
     },
+  },
+  error: {
+    fontFamily: 'Source Code Pro',
+    color: 'red',
+    fontSize: '.9em',
+    position: 'absolute',
+    bottom: '-40px',
+    left: '50%',
+    width: '100%',
+    transform: 'translateX(-50%)',
+    margin: 0,
   }
 })
 

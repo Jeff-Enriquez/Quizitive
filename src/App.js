@@ -27,7 +27,7 @@ function App({ firebase }) {
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route exact path='/login' render={() =>
-        <Login/> 
+        <Login setUser={setUser} firebase={firebase}/> 
       }/>
       <Route exact path='/sign-up' render={() =>
         <SignUp setUser={setUser} firebase={firebase}/>

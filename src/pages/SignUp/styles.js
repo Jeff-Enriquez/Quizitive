@@ -51,7 +51,7 @@ const useStyles = createUseStyles({
     color: 'red',
     fontSize: '.9em',
     position: 'absolute',
-    bottom: '-30px',
+    bottom: '-40px',
     left: '50%',
     width: '100%',
     transform: 'translateX(-50%)',

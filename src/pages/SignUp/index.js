@@ -22,20 +22,21 @@ const SignUp = ({ firebase, setUser }) => {
     }
     try {
       const { user } = await firebase.doCreateUserWithEmailAndPassword(email, password1)
-      setUser(user)
-      console.log(user)
+      setUser(user.uid)
     } catch (err) {
-      setError(err)
+      setError(err.message)
     }
   }
 
   return (
     <div className={classes.container}>
       <h1 className={classes.h1}>Quizitive</h1>
-      <input className={classes.input} type='text' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}/>
-      <input className={classes.input} type='password' placeholder='Password' value={password1} onChange={e => setPassword1(e.target.value)}/>
-      <input className={classes.input} type='password' placeholder='Confirm password' value={password2} onChange={e => setPassword2(e.target.value)}/>
-      <button className={classes.button} onClick={e => handleForm(e)}>Sign Up</button>
+      <form onSubmit={e => handleForm(e)}>
+        <input className={classes.input} type='text' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}/>
+        <input className={classes.input} type='password' placeholder='Password' value={password1} onChange={e => setPassword1(e.target.value)}/>
+        <input className={classes.input} type='password' placeholder='Confirm password' value={password2} onChange={e => setPassword2(e.target.value)}/>
+        <button type='submit' className={classes.button}>Sign Up</button>
+      </form>
       {error 
         ? 
         <p className={classes.error}>{error}</p>
