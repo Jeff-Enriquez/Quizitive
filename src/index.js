@@ -11,6 +11,9 @@ import jss from 'jss'
 
 import WebFont from 'webfontloader'
 
+import Firebase, { FirebaseContext } from './services/Firebase'
+
+
 WebFont.load({
   google: {
     families: [
@@ -41,7 +44,11 @@ ReactDOM.render(
   <React.StrictMode>
     <JssProvider registry={sheets}>
       <BrowserRouter>
-        <App />
+        <FirebaseContext.Provider value={new Firebase()}>
+          <FirebaseContext.Consumer>
+            {firebase => <App firebase={firebase} />}
+          </FirebaseContext.Consumer>
+        </FirebaseContext.Provider>
       </BrowserRouter>
     </JssProvider>
   </React.StrictMode>,
