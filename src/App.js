@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import PrivateRoute from './components/PrivateRoute'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+
 
 function App({ firebase }) {
   const [user, setUser] = useState(null)
@@ -14,12 +16,12 @@ function App({ firebase }) {
   useEffect(() => {
     firebase.auth.onAuthStateChanged(user => {
       if(user){
-        setUser(user)
+        setUser(user.uid)
       } else {
         setUser(undefined)
       }
+      console.log(user.uid)
     })
-    console.log(user)
     return
   }, [])
 
