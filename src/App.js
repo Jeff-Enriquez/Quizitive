@@ -21,28 +21,33 @@ function App({ firebase }) {
       } else {
         setUser(undefined)
       }
-      console.log(user.uid)
     })
     return
   }, [])
 
   return (
-    <Switch>
-      <Route exact path='/' component={GamePin}/>
-      <Route exact path='/login' render={() =>
-        <Login setUser={setUser} firebase={firebase}/> 
-      }/>
-      <Route exact path='/sign-up' render={() =>
-        <SignUp setUser={setUser} firebase={firebase}/>
-      }/>
-      <PrivateRoute 
-        exact path='/home'
-        component={Home} 
-        user={user}
-        signOut={signOut}
-        firebase={firebase}
-      />
-    </Switch>
+    <>
+      { user === null ?
+      <h1>loading</h1>
+      :
+      <Switch>
+        <Route exact path='/' component={GamePin}/>
+        <Route exact path='/login' render={() =>
+          <Login setUser={setUser} firebase={firebase}/> 
+        }/>
+        <Route exact path='/sign-up' render={() =>
+          <SignUp setUser={setUser} firebase={firebase}/>
+        }/>
+        <PrivateRoute 
+          exact path='/home'
+          component={Home} 
+          user={user}
+          signOut={signOut}
+          firebase={firebase}
+        />
+      </Switch>
+      }
+    </>
   )
 }
 
