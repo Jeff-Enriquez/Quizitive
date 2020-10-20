@@ -7,7 +7,7 @@ const Home = () => {
   
   return (
     <div className={classes.container}>
-      <button className={classes.create}>create +</button>
+      <Link to='/create' className={classes.create}>create +</Link>
       {/* Render my quizzes */}
     </div>
   )

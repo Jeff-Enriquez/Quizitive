@@ -13,7 +13,7 @@ const Home = () => {
       <input className={classes.input} type='number' placeholder='Game PIN' value={gamePIN} onChange={e => setGamePIN(e.target.value)}/>
       <button className={classes.button} onClick=''>Enter</button>
       <p className={classes.or}>or</p>
-      <Link className={classes.signIn} to='/sign-in'>sign in</Link>
+      <Link className={classes.signIn} to='/login'>sign in</Link>
     </div>
   )
 }

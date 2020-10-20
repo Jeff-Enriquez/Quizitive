@@ -8,6 +8,10 @@ const useStyles = createUseStyles({
     transform: 'translate(-50%, -50%)',
     textAlign: 'center',
     boxSizing: 'border-box',
+    border: '1px solid black',
+  },
+  create: {
+
   },
 })
 
