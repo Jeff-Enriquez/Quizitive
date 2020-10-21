@@ -4,16 +4,15 @@ const useStyles = createUseStyles( theme => ({
   mainContainer: {
     height: `100vh`,
     width: '100vw',
-    border: '1px solid red',
     boxSizing: 'border-box',
     paddingBottom: theme.createFooterHeight,
     paddingTop: theme.headerHeight,
+    backgroundColor: 'rgb(242, 242, 242)',
   },
   asideContainer: {
     position: 'absolute',
     top: 0,
     left: 0,
-    border: '1px solid black',
     boxSizing: 'border-box',
     width: 200,
     height: '100vh',
@@ -23,7 +22,6 @@ const useStyles = createUseStyles( theme => ({
     transform: 'translateX(-100%)',
   },
   asideQuestionContainer: {
-    border: '1px solid gray',
     fontFamily: 'Work Sans',
     width: '90%',
     margin: '15px auto',
@@ -55,7 +53,7 @@ const useStyles = createUseStyles( theme => ({
     fontFamily: 'Source Code Pro',
     fontSize: '32px',
     zIndex: 20,
-    backgroundColor: 'rgba(175, 255, 170, .6)',
+    backgroundColor: 'rgba(168, 215, 255, .6)',
     color: 'rgba(0,0,0,.6)',
     cursor: 'pointer',
     paddingTop: 4.5,
@@ -68,7 +66,7 @@ const useStyles = createUseStyles( theme => ({
     transformOrigin: 'center',
     transition: 'transform 1s',
     '&:hover': {
-      backgroundColor: 'rgba(175, 255, 170, .85)',
+      backgroundColor: 'rgba(168, 215, 255, .85)',
       color: 'rgba(0,0,0,.85)',
     }
   },

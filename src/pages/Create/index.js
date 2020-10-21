@@ -38,7 +38,7 @@ const Create = () => {
       questions.push(
         <div className={classes.asideQuestionContainer} key={i} onClick={() => setCurrentQuestion(i)}>
           <p className={classes.asideQuestionNumber}>Question {i+1}</p>
-          <p className={classes.asideQuestion}>This is what my question would say{allQuestions[i].question.substr(0, 20)}</p>
+          <p className={classes.asideQuestion}>{allQuestions[i].question.substr(0, 80)}</p>
         </div>
       )
     }
@@ -51,9 +51,9 @@ const Create = () => {
       const highlightDiv = 
       <div className={`${classes.asideQuestionContainer} ${classes.highlightQuestion}`} key={currentQuestion}>
         <p className={classes.asideQuestionNumber}>Question {currentQuestion+1}</p>
-        <p className={classes.asideQuestion}>This is what my question would say{allQuestions[currentQuestion].question.substr(0, 20)}</p>
+        <p className={classes.asideQuestion}>{allQuestions[currentQuestion].question.substr(0, 80)}</p>
       </div>
-      return newState.slice(0, currentQuestion).concat([highlightDiv]).concat(newState.slice(currentQuestion))
+      return newState.slice(0, currentQuestion).concat([highlightDiv]).concat(newState.slice(currentQuestion + 1))
     })
   }, [currentQuestion])
 
@@ -79,38 +79,6 @@ const Create = () => {
       <aside className={isAsideOpen ? `${classes.asideContainer} ${classes.slideInAsideContainer}` : classes.asideContainer}>
         <div className={classes.overflow}>
           {displayAllQuestions}
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 2</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 3</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 4</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 5</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 6</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 7</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 8</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
-          <div className={classes.asideQuestionContainer}>
-            <p className={classes.asideQuestionNumber}>Question 9</p>
-            <p className={classes.asideQuestion}>This is what my question would say</p>
-          </div>
         </div>
         <div className={isAsideOpen ? `${classes.asideArrow} ${classes.asideArrowClose}` : classes.asideArrow}
           onClick={() => setIsAsideOpen(prevState => !prevState)}
