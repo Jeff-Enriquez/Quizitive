@@ -4,6 +4,8 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter } from 'react-router-dom'
 
+import ThemeStyle from './ThemeStyle.js'
+import { ThemeProvider } from 'react-jss'
 import { JssProvider } from 'react-jss'
 import { SheetsRegistry } from 'react-jss'
 import preset from 'jss-preset-default'
@@ -42,15 +44,17 @@ const sheets = setupJss()
 
 ReactDOM.render(
   <React.StrictMode>
-    <JssProvider registry={sheets}>
-      <BrowserRouter>
-        <FirebaseContext.Provider value={new Firebase()}>
-          <FirebaseContext.Consumer>
-            {firebase => <App firebase={firebase} />}
-          </FirebaseContext.Consumer>
-        </FirebaseContext.Provider>
-      </BrowserRouter>
-    </JssProvider>
+    <ThemeProvider theme={ThemeStyle}>
+      <JssProvider registry={sheets}>
+        <BrowserRouter>
+          <FirebaseContext.Provider value={new Firebase()}>
+            <FirebaseContext.Consumer>
+              {firebase => <App firebase={firebase} />}
+            </FirebaseContext.Consumer>
+          </FirebaseContext.Provider>
+        </BrowserRouter>
+      </JssProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

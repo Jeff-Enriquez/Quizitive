@@ -5,7 +5,7 @@ import GamePin from './pages/GamePin'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Home from './pages/Home'
-
+import Create from './pages/Create'
 
 function App({ firebase }) {
   const [user, setUser] = useState(null)
@@ -41,6 +41,13 @@ function App({ firebase }) {
         <PrivateRoute 
           exact path='/home'
           component={Home} 
+          user={user}
+          signOut={signOut}
+          firebase={firebase}
+        />
+        <PrivateRoute 
+          exact path='/create'
+          component={Create} 
           user={user}
           signOut={signOut}
           firebase={firebase}
