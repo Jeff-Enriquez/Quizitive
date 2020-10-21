@@ -9,8 +9,8 @@ const Create = () => {
     answers: ['', '', '', ''],
   }])
   const [currentQuestion, setCurrentQuestion] = useState(0)
-
   const [displayAllQuestions, setDisplayAllQuestions] = useState(null)
+  const [isAsideOpen, setIsAsideOpen] = useState(false)
 
   const classes = useStyles()
 
@@ -35,15 +35,27 @@ const Create = () => {
   useEffect(() => {
     const questions = []
     for(let i = 0; i < allQuestions.length; i++){
-      console.log(allQuestions[i].question)
       questions.push(
-        <div className={classes.questionContainer} key={i} onClick={() => setCurrentQuestion(i)}>
-          <p>{allQuestions[i].question.substr(0, 20)}</p>
+        <div className={classes.asideQuestionContainer} key={i} onClick={() => setCurrentQuestion(i)}>
+          <p className={classes.asideQuestionNumber}>Question {i+1}</p>
+          <p className={classes.asideQuestion}>This is what my question would say{allQuestions[i].question.substr(0, 20)}</p>
         </div>
       )
     }
     setDisplayAllQuestions(questions)
   }, [allQuestions])
+
+  useEffect(() => {
+    setDisplayAllQuestions(prevState => {
+      const newState = [...prevState]
+      const highlightDiv = 
+      <div className={`${classes.asideQuestionContainer} ${classes.highlightQuestion}`} key={currentQuestion}>
+        <p className={classes.asideQuestionNumber}>Question {currentQuestion+1}</p>
+        <p className={classes.asideQuestion}>This is what my question would say{allQuestions[currentQuestion].question.substr(0, 20)}</p>
+      </div>
+      return newState.slice(0, currentQuestion).concat([highlightDiv]).concat(newState.slice(currentQuestion))
+    })
+  }, [currentQuestion])
 
   return (
     <>
@@ -64,9 +76,48 @@ const Create = () => {
           </div>
         </div>
       </main>
-      <footer className={classes.footerContainer}>
-        {displayAllQuestions}
-      </footer>
+      <aside className={isAsideOpen ? `${classes.asideContainer} ${classes.slideInAsideContainer}` : classes.asideContainer}>
+        <div className={classes.overflow}>
+          {displayAllQuestions}
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 2</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 3</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 4</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 5</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 6</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 7</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 8</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+          <div className={classes.asideQuestionContainer}>
+            <p className={classes.asideQuestionNumber}>Question 9</p>
+            <p className={classes.asideQuestion}>This is what my question would say</p>
+          </div>
+        </div>
+        <div className={isAsideOpen ? `${classes.asideArrow} ${classes.asideArrowClose}` : classes.asideArrow}
+          onClick={() => setIsAsideOpen(prevState => !prevState)}
+        > 
+          {'>'} 
+        </div>
+      </aside>
     </>
   )
 }

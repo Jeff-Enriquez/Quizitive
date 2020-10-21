@@ -13,6 +13,7 @@ const useStyles = createUseStyles( theme => ({
     padding: '2px 8px 2px 8px',
     backgroundColor: '#b3d9ff',
     height: theme.headerHeight,
+    zIndex: 900,
   },
   title: {
     textDecoration: 'none',
